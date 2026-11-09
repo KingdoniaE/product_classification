@@ -1,16 +1,24 @@
-from sys import argv
 
+from argparse import ArgumentParser
 if __name__ == '__main__':
-    print(argv)
+    parser = ArgumentParser(usage='usge: main.py action')
+    parser.add_argument('action',choices=['evaluate','train','predict','preprocess','run'])
+    args=parser.parse_args()
+    action = args.action
 
-    if len(argv) != 2:
-        print("Usage: python3 main.py path")
-    else:
-        script = argv[1]
-        match script:
-            case 'process':
-                from src.process.preprocess import preprocess
-                preprocess()
-            case 'train':
-                from src.runner.train import train
-                train()
+    match action:
+        case 'train':
+            from src.runner.train import train
+            train()
+        case 'preprocess':
+            from src.process.preprocess import preprocess
+            preprocess()
+        case 'evaluate':
+            from src.runner.evaluate import evaluate
+            evaluate()
+        case 'predict':
+            from src.runner.predict import predict
+            predict()
+        case 'run':
+            from src.web.app import run
+            run()

@@ -6,7 +6,7 @@ DATA_DIR = ROOT_DIR / "data"
 RAW_DATA_DIR = DATA_DIR / "raw"
 PROCESSED_DATA_DIR = DATA_DIR / "processed"
 
-MODELS_DIR = ROOT_DIR / "models"
+MODELS_DIR = ROOT_DIR / "checkpoints"
 LOGS_DIR = ROOT_DIR / "logs"
 
 #文件
@@ -15,8 +15,11 @@ TEST_DATA_FILE = "test.txt"
 VALID_DATA_FILE = "valid.txt"
 
 MODEL_NAME = "google-bert/bert-base-chinese"
+LABELS_FILE = "labels.txt"
 
 #超参数
-BATCH_SIZE = 64
+BATCH_SIZE = 4
 EPOCHS = 10
 LEARNING_RATE = 1e-5
+SAVE_STEPS = 1
+EARLY_STOPP_PATIENCE = 2
